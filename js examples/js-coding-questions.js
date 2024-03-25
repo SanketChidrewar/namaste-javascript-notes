@@ -128,3 +128,49 @@ for(let i = 0 ; i < wordArr.length / 2; i++){
 }
 word = wordArr.join('');
 console.log(word);
+
+// 7 - Write a function to find the second largest number in an array without sorting the array.
+
+// const ar = [1, 2, 4, 5, 7, 3, 9];
+
+// let largest = 0;
+// for(let num in ar){
+//     if(ar[num] > largest){
+//         largest = ar[num];
+//     }
+// }
+// console.log(largest);
+
+// let secondLarget = 0;
+// for(let num in ar){
+//     if(ar[num] !== largest && ar[num] > secondLarget){
+//         secondLarget = ar[num];
+//     }
+// }
+
+// console.log(secondLarget);
+
+const ar = [1, 2, 4, 5, 7, 3, 9];
+
+let largest = ar[0];
+let secondLargest = ar[0];
+
+for (let i = 1; i < ar.length; i++) {
+    if (ar[i] > largest) {
+        secondLargest = largest;
+        largest = ar[i];
+    } else if (ar[i] > secondLargest && ar[i] !== largest) {
+        secondLargest = ar[i];
+    }
+}
+
+console.log(secondLargest); // Output: 7 (the second largest number in the array)
+
+// 8 - Implement your own version of the map function in JavaScript, which applies a function to each element of an array and returns a new array with the results.
+
+// 9 - Write a function to check if two strings are anagrams of each other (contain the same characters in a different order).
+
+// 10 - Write a function to rotate an array to the right by k steps.
+
+
+
