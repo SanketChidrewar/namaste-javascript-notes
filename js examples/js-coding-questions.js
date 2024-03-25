@@ -67,3 +67,52 @@ console.log(findMissingNumber(arr));
 
 // 5 - Write a function to deeply clone an object, ensuring that nested objects and arrays are also cloned rather than referenced.
 
+function deepClone(obj) {
+    if (obj === null || typeof obj !== 'object') {
+        // If obj is null or not an object, return obj itself
+        return obj;
+    }
+
+    let clone;
+    if (Array.isArray(obj)) {
+        // If obj is an array, create a new array
+        clone = [];
+        for (const item of obj) {
+            // Recursively clone each item in the array
+            clone.push(deepClone(item));
+        }
+    } else {
+        // If obj is an object, create a new object
+        clone = {};
+        for (const key in obj) {
+            if (Object.prototype.hasOwnProperty.call(obj, key)) {
+                // Recursively clone each property in the object
+                clone[key] = deepClone(obj[key]);
+            }
+        }
+    }
+
+    return clone;
+}
+
+// Example usage:
+const originalObj = {
+    name: 'John',
+    age: 30,
+    address: {
+        city: 'New York',
+        zipCode: '10001'
+    },
+    hobbies: ['reading', 'painting', ['a', ['b', 'c']]]
+};
+
+const clonedObj = deepClone(originalObj);
+
+// Modify the cloned object to verify deep cloning
+clonedObj.name = 'Jane';
+clonedObj.address.city = 'Los Angeles';
+clonedObj.hobbies.push('gardening');
+
+console.log(originalObj);
+console.log(clonedObj);
+
