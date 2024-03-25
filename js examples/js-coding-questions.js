@@ -116,3 +116,15 @@ clonedObj.hobbies.push('gardening');
 console.log(originalObj);
 console.log(clonedObj);
 
+// 6 - Write a function that reverses the words in a sentence without using any built-in reverse functions.
+
+let word = "testsd";
+let wordArr = word.split('');
+
+for(let i = 0 ; i < wordArr.length / 2; i++){
+    let a = wordArr[i];
+    wordArr[i] = wordArr[wordArr.length - 1 - i];
+    wordArr[wordArr.length - 1 - i] = a;
+}
+word = wordArr.join('');
+console.log(word);
